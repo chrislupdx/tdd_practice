@@ -1,46 +1,29 @@
 const test = QUnit.test;
 
-// function sortUrl(array) {
-//     const arrayitemlengths = array.map(number => {
-//         return number.length;
-//     });
-//     return arrayitemlengths;
-// }
-
 function sortUrl(array) {
     //iterate through the array and play war with the next value with the previous
     //move through the array and compare the value of string to array[position of next]
-    const maprearranged = array.map(string => {
-        const nextNumber = array.indexOf(string);
+    const newArray = [];
+    array.forEach(string => {
+        const nextNumber = array.indexOf(string) + 1;
         const nextLength = array[nextNumber].length;
-        if(string.length > nextLength) {
-            //if stirng.length is bigger than the next, put it ahead of nextlent
-            // can I manipulate the ordinal position of an item an an array?
-            //map returns a new array with the original values: I don't want that here, I want to pull it apart by the arry, but not have it come back differently.
-        }
-    });
 
-    const rearranged = array.forEach(string => {
-        const newArray = [];
-        const nextNumber = array.indexOf(string + 1);
-        const nextLength = array[nextNumber].length;
-        // && array.indexOf(string) == 0
         // eslint-disable-next-line eqeqeq
         if(string.length > nextLength) {
-            //push/pop/slice string to newArray 
-            //if the current string is longer than the next one, pop it onto newArray
-            newArray;
-
-        } 
-
-        console.log(newArray);
-        console.log(nextNumber);
+            newArray.push(string);
+        }
+        if(string.length < nextLength) {
+            newArray.unshift(string);
+        }
+        // eslint-disable-next-line eqeqeq
+        if(array.lastIndexOf(string) == 0) {
+            console.log('last item is', string);
+        }
+        console.log(array.length, 'newarray');
         return newArray;
     });
-
-    console.log('hi');
-    return rearranged;
 }
+
 
 QUnit.module('day one');
 
